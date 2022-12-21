@@ -5,17 +5,19 @@ import Todo from './Todo.js'
 
 export default function TodoList() {
     const [todos,setTodos] = useState([]);
-    const [value,setValue] = useState('');
+    const [text,setText] = useState('');
     const inputRef = useRef(null);
 
-    function handleTodoAdd() {
+    function handleTodoAdd(e) {
+        e.preventDefault();
+        if(inputRef.current.value === '') return;
         const newTodo = {
             id : uuid(),
             text : inputRef.current.value,
             done:false
         }
         setTodos([...todos,newTodo]);
-        setValue('');
+        setText('');
     }
 
     function handleDeleteTodo(todoId){
@@ -37,13 +39,18 @@ export default function TodoList() {
 
     return (
         <div className='todolist'>
-            <input 
-             type="text"
-             ref={inputRef} 
-             value={value} 
-             onChange={e=>setValue(e.target.value)} 
-             />
-            <button onClick={handleTodoAdd} >Add</button>
+            <form>
+                <input 
+                type="text"
+                ref={inputRef} 
+                value={text} 
+                onChange={e=>setText(e.target.value)} 
+                placeholder="Create a new todo..."
+                />
+                <button onClick={handleTodoAdd}
+                 className="add-button"
+                 >+</button>
+            </form>
             <ul>
                 {todos.map(todo => (
                     <Todo 
