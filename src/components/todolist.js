@@ -36,7 +36,7 @@ export default function TodoList() {
     }
 
     return (
-        <>
+        <div className='todolist'>
             <input 
              type="text"
              ref={inputRef} 
@@ -54,6 +54,6 @@ export default function TodoList() {
                     />
                 ) )}
             </ul>
-        </>
+        </div>
     );
 }
