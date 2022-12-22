@@ -3,18 +3,17 @@ import React from "react";
 export default function Todo({todo,handleDelete,handleCheck}) {
     
     return (
-        
-            <li>
+            <li className="todo">
                 <label>
                     <input 
                     type="checkbox" 
                     checked={todo.done} 
                     onChange={()=> handleCheck(todo.id)}
                     />
+                    <span className="checkmark"></span>
                     {todo.text}
+                    <button onClick={() => handleDelete(todo.id)} >delete</button>
                 </label>
-                <button onClick={() => handleDelete(todo.id)} >delete</button>
             </li>
-
     );
 } 

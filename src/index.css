@@ -32,7 +32,7 @@ header {
   letter-spacing: 10px;
 }
 .theme {
- width: 1.7rem; 
+ width: 1.65rem; 
  cursor: pointer;
 }
 
@@ -41,16 +41,16 @@ header {
   width: 36rem;
 }
 form {
-  margin-top: 2.5rem;
+  margin: 2.5rem 0 1.5rem 0;
   width: 100%;
   display: flex;
 }
 input[type='text'] {
   flex-grow: 1;
-  height: 3.7rem;
+  height: 3.9rem;
   color: hsl(235, 19%, 35%);
-  font-size: 1.2rem;
-  padding-left: 3rem;
+  font-size: 1.3rem;
+  padding-left: 3.4rem;
   border-radius: 5px 0 0 5px;
 }
 .add-button {
@@ -63,4 +63,45 @@ input[type='text'] {
   cursor: pointer;
 }
 
+.list-container {
+  background-color: white;
+  border-radius: 5px;
+}
+.todo {
+  height: 3.8rem;
+  font-size: 1.3rem;
+  padding-left: 3.4rem;
+  position: relative;
+  border-bottom: 1px solid hsl(236, 33%, 92%);
+}
+label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+input[type="checkbox"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+.checkmark {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid hsl(236, 33%, 92%);
+  position: absolute;
+  top: 1.2rem;
+  left: 1.1rem;
+  cursor: pointer;
+}
+.todo:hover .checkmark{
+  border-image: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+}
+input[type="checkbox"]:checked ~ .checkmark {
+  background: url('../public/images/icon-check.svg') no-repeat center,
+              linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
 
+} 

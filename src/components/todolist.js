@@ -51,16 +51,18 @@ export default function TodoList() {
                  className="add-button"
                  >+</button>
             </form>
-            <ul>
-                {todos.map(todo => (
-                    <Todo 
-                    key={todo.id} 
-                    todo={todo}
-                    handleDelete={handleDeleteTodo}
-                    handleCheck={handleCheck}
-                    />
-                ) )}
-            </ul>
+            <div className='list-container'>
+                <ul>
+                    {todos.map(todo => (
+                        <Todo 
+                        key={todo.id} 
+                        todo={todo}
+                        handleDelete={handleDeleteTodo}
+                        handleCheck={handleCheck}
+                        />
+                    ) )}
+                </ul>
+            </div>
         </div>
     );
 }
