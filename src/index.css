@@ -41,6 +41,7 @@ header {
   width: 36rem;
 }
 form {
+  position: relative;
   margin: 2.5rem 0 1.5rem 0;
   width: 100%;
   display: flex;
@@ -66,19 +67,25 @@ input[type='text'] {
 .list-container {
   background-color: white;
   border-radius: 5px;
+  box-shadow: 0 15px 30px 4px hsla(235, 19%, 35%,14%);
 }
 .todo {
+  color: hsl(233, 14%, 35%);
   height: 3.8rem;
   font-size: 1.3rem;
-  padding-left: 3.4rem;
+  padding: 0 1.5rem 0 3.7rem;
   position: relative;
   border-bottom: 1px solid hsl(236, 33%, 92%);
+}
+.todo:hover {
+  color: hsl(237, 14%, 26%);
 }
 label {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 input[type="checkbox"] {
   position: absolute;
@@ -98,10 +105,46 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 .todo:hover .checkmark{
-  border-image: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+  border: double 1px transparent;
+  background-image: linear-gradient(white, white), 
+  linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
+  background-clip: content-box,border-box;
+  background-origin: border-box;
 }
 input[type="checkbox"]:checked ~ .checkmark {
   background: url('../public/images/icon-check.svg') no-repeat center,
-              linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
-
+  linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%)) content-box;
 } 
+.cross-icon {
+  display: none;
+}
+.todo:hover .cross-icon {
+  display: block;
+} 
+
+.filter-list {
+  font-size: 15px;
+  color: hsl(236, 9%, 61%);
+  height: 3rem;
+  display: flex;
+  padding: 0 1.2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.filter-buttons span {
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 5px;
+}
+.filter-buttons span:hover {
+  color: hsl(235, 19%, 35%);
+}
+.clear-completed {
+  cursor: pointer;
+}
+.clear-completed:hover {
+  color: hsl(235, 19%, 35%);
+}
+.active-filter {
+  color: hsl(220, 98%, 61%);
+}

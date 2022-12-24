@@ -12,7 +12,10 @@ export default function Todo({todo,handleDelete,handleCheck}) {
                     />
                     <span className="checkmark"></span>
                     {todo.text}
-                    <button onClick={() => handleDelete(todo.id)} >delete</button>
+                    <img src='./images/icon-cross.svg' 
+                        onClick={() => handleDelete(todo.id)}
+                        className="cross-icon" alt=""
+                    />
                 </label>
             </li>
     );
