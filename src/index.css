@@ -8,13 +8,14 @@
   border: none;
   outline: none;
 }
-main {
+main#light {
   height: 100vh;
   display: flex;
   align-items: center; 
   flex-direction: column;
   background: url('../public/images/bg-desktop-light.jpg') no-repeat;
   background-size: contain;
+  background-color: white;
 }
 
 header {
@@ -45,8 +46,13 @@ form {
   margin: 2.5rem 0 1.5rem 0;
   width: 100%;
   display: flex;
+  box-shadow: 0 15px 30px  hsla(235, 19%, 35%,10%);
 }
-input[type='text'] {
+.list {
+  max-height: 26.6rem;
+  overflow-y: auto;
+}
+input[type='text']#light {
   flex-grow: 1;
   height: 3.9rem;
   color: hsl(235, 19%, 35%);
@@ -54,7 +60,7 @@ input[type='text'] {
   padding-left: 3.4rem;
   border-radius: 5px 0 0 5px;
 }
-.add-button {
+.add-button#light {
   width: 3.8rem;
   color: hsl(235, 19%, 35%);
   font-size: 3rem;
@@ -64,22 +70,23 @@ input[type='text'] {
   cursor: pointer;
 }
 
-.list-container {
+#light.list-container {
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 15px 30px 4px hsla(235, 19%, 35%,14%);
 }
-.todo {
+#light.todo {
   color: hsl(233, 14%, 35%);
   height: 3.8rem;
   font-size: 1.3rem;
-  padding: 0 1.5rem 0 3.7rem;
+  padding: 0 1.2rem 0 3.7rem;
   position: relative;
   border-bottom: 1px solid hsl(236, 33%, 92%);
 }
-.todo:hover {
+#light.todo:hover {
   color: hsl(237, 14%, 26%);
 }
+
 label {
   width: 100%;
   height: 100%;
@@ -93,36 +100,38 @@ input[type="checkbox"] {
   height: 0;
   opacity: 0;
 }
-.checkmark {
+#light.checkmark {
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
-  border: 1px solid hsl(236, 33%, 92%);
+  border: 1px solid hsl(234, 39%, 85%);
   position: absolute;
   top: 1.2rem;
   left: 1.1rem;
   cursor: pointer;
 }
-.todo:hover .checkmark{
-  border: double 1px transparent;
-  background-image: linear-gradient(white, white), 
-  linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
-  background-clip: content-box,border-box;
-  background-origin: border-box;
+.todo:hover #light.checkmark {
+  border-color: hsl(237, 14%, 60%);
 }
-input[type="checkbox"]:checked ~ .checkmark {
+input[type="checkbox"]:checked + .checkmark {
   background: url('../public/images/icon-check.svg') no-repeat center,
   linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%)) content-box;
 } 
+
+input[type="checkbox"]:checked ~ p#light {
+  color: hsl(233, 11%, 84%);
+  text-decoration: line-through;
+}
 .cross-icon {
   display: none;
+  cursor: pointer;
 }
 .todo:hover .cross-icon {
   display: block;
 } 
 
-.filter-list {
+#light.filter-list {
   font-size: 15px;
   color: hsl(236, 9%, 61%);
   height: 3rem;
@@ -136,15 +145,117 @@ input[type="checkbox"]:checked ~ .checkmark {
   cursor: pointer;
   margin: 0 5px;
 }
-.filter-buttons span:hover {
+#light.filter-buttons span:hover {
   color: hsl(235, 19%, 35%);
 }
-.clear-completed {
+#light.clear-completed {
   cursor: pointer;
 }
-.clear-completed:hover {
+#light.clear-completed:hover {
   color: hsl(235, 19%, 35%);
 }
 .active-filter {
   color: hsl(220, 98%, 61%);
+}
+
+/* ===================== Dark Mode ======================== */
+
+main#dark {
+  height: 100vh;
+  display: flex;
+  align-items: center; 
+  flex-direction: column;
+  background: url('../public/images/bg-desktop-dark.jpg') no-repeat;
+  background-size: contain;
+  background-color: hsl(235, 21%, 11%);
+}
+#dark.list-container {
+  border: 1px solid hsl(235, 24%, 19%);
+  background-color: hsl(235, 24%, 19%);
+  border-radius: 5px;
+  box-shadow: 0 20px 40px 5px rgba(0, 0, 0,45%);
+  overflow: hidden;
+}
+input[type='text']#dark {
+  flex-grow: 1;
+  height: 3.9rem;
+  color: hsl(234, 39%, 85%);
+  font-size: 1.3rem;
+  padding-left: 3.4rem;
+  border-radius: 5px 0 0 5px;
+  background-color: hsl(235, 24%, 19%);
+}
+.add-button#dark {
+  width: 3.8rem;
+  color: white;
+  font-size: 3rem;
+  background-color: hsl(235, 24%, 19%);
+  border-radius: 0 5px 5px 0;
+  border-left: 0.5px solid hsl(235, 19%, 35%);
+  cursor: pointer;
+}
+#dark.checkmark {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid hsl(234, 11%, 52%);
+  position: absolute;
+  top: 1.2rem;
+  left: 1.1rem;
+  cursor: pointer;
+}
+.todo:hover #dark.checkmark {
+  border-color: hsl(236, 33%, 92%) ;
+}
+
+#dark.todo {
+  color: hsl(234, 39%, 85%);
+  height: 3.8rem;
+  font-size: 1.3rem;
+  padding: 0 1.2rem 0 3.7rem;
+  position: relative;
+  border-bottom: 1px solid hsl(237, 14%, 26%);
+  background-color: hsl(235, 24%, 19%);
+}
+#dark.todo:hover {
+  color: hsl(236, 33%, 92%);
+}
+
+input[type="checkbox"]:checked ~ p#dark {
+  color: hsl(234, 11%, 52%);
+  text-decoration: line-through;
+} 
+
+#dark.filter-list {
+  font-size: 15px;
+  color: hsl(236, 9%, 61%);
+  height: 3rem;
+  display: flex;
+  padding: 0 1.2rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: hsl(235, 24%, 19%);
+}
+#dark.filter-buttons span:hover {
+  color: hsl(236, 33%, 92%);
+}
+
+#dark.clear-completed {
+  cursor: pointer;
+}
+
+#dark.clear-completed:hover {
+  color: hsl(236, 33%, 92%);
+}
+
+#light.drag-drop {
+  margin-top: 3rem;
+  color: hsl(236, 9%, 61%);
+  font-size: 13px;
+}
+#dark.drag-drop {
+  margin-top: 3rem;
+  color: hsl(234, 11%, 52%);
+  font-size: 13px;
 }
