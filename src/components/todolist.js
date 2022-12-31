@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import Todo from './Todo.js'
 import {themeContext} from './context.js';
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';    
 
 export default function TodoList() {
     const [todos,setTodos] = useState([]);
@@ -59,6 +60,10 @@ export default function TodoList() {
         renderList = todos.filter(todo=> todo.done);
     } 
     
+    function handleDragEnd(result) {
+        console.log(result);
+    }
+
     return (
         <div className='todolist'>
             <form>
@@ -79,17 +84,36 @@ export default function TodoList() {
             </form>
 
             <div className='list-container' id={theme}>
-                <ul className='list'>
-                    {renderList.map(todo => (
-                        <Todo 
-                        key={todo.id} 
-                        todo={todo}
-                        handleDelete={handleDeleteTodo}
-                        handleCheck={handleCheck}
-                        />
-                    ) )}
-                </ul>
-
+                <DragDropContext onDragEnd={handleDragEnd}>
+                    <Droppable droppableId='list1'>
+                        {(provided)=> (
+                            <ul 
+                             ref={provided.innerRef}
+                             {...provided.droppableProps}
+                             className='list'
+                            >
+                                {renderList.map( (todo,index) => (
+                                    <Draggable key={todo.id}  draggableId={todo.id} index={index}>
+                                        {provided => (
+                                            <div
+                                            ref={provided.innerRef}
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                            >
+                                                <Todo 
+                                                 todo={todo}
+                                                 handleDelete={handleDeleteTodo}
+                                                 handleCheck={handleCheck}
+                                                />
+                                            </div>
+                                        )}
+                                    </Draggable>
+                                ) )}    
+                                {provided.placeholder}
+                            </ul>
+                        )}
+                    </Droppable>
+                </DragDropContext>
                 <div className='filter-list' id={theme}>
                     <p>{todos.length} items left</p>
                     <div className="filter-buttons" id={theme}>

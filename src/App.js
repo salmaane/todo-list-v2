@@ -4,7 +4,7 @@ import {useState} from 'react';
 import {themeContext} from './components/context.js';
 
 function App() {
-  const [theme,setTheme] = useState('light');
+  const [theme,setTheme] = useState('dark');
   const changeTheme = () => {
     setTheme(curr=> curr==='light'? 'dark':'light');
   };
@@ -16,7 +16,7 @@ function App() {
       <header>
         <h1 className='logo' >TODO</h1>
         <img 
-          src={theme==='light' ? './images/icon-moon.svg':'./images/icon-sun.svg'}
+          src={theme === 'light' ? './images/icon-moon.svg':'./images/icon-sun.svg'}
           alt=''
           className='theme'
           onClick={changeTheme}
