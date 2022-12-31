@@ -61,7 +61,11 @@ export default function TodoList() {
     } 
     
     function handleDragEnd(result) {
-        console.log(result);
+        const updatedArray = [...todos];
+        const [reorderedItem] = updatedArray.splice(result.source.index,1);
+        updatedArray.splice(result.destination.index,0,reorderedItem);
+
+        setTodos(updatedArray);
     }
 
     return (
