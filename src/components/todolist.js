@@ -1,13 +1,23 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Todo from './Todo.js'
 import {themeContext} from './context.js';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';    
+
+const LOCAL_STORAGE_TODOS = 'todoApp.todos';
 
 export default function TodoList() {
     const [todos,setTodos] = useState([]);
     const [inputText,setInputText] = useState('');
     const [activeFilter,setActiveFilter] = useState('All');
     const theme = useContext(themeContext);
+
+    useEffect(()=>{
+        const storedTodos = JSON.parse( localStorage.getItem(LOCAL_STORAGE_TODOS) );
+        if(storedTodos) setTodos(storedTodos);
+    },[]);
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_TODOS,JSON.stringify(todos));
+    },[todos]);
 
     function handleTodoAdd(e) {
         e.preventDefault();
