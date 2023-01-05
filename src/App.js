@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoList from './components/todolist';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {themeContext} from './components/context.js';
 
 function App() {
@@ -9,6 +9,13 @@ function App() {
     setTheme(curr=> curr==='light'? 'dark':'light');
   };
   
+  useEffect(()=>{
+    const storedTheme = localStorage.getItem('theme');
+    if(storedTheme) setTheme(storedTheme);
+  },[]);
+  useEffect(()=> {
+    localStorage.setItem('theme',theme);
+  },[theme]);
 
   return (
     <themeContext.Provider value={theme}>
