@@ -17,5 +17,5 @@ User-friendly interface
 You can see the live demo of this project [here](https://salmaane.github.io/todo-list-v2/).
 
 ### Preview
-![screenshot 1](readme_images/Screenshot (61).png)
-![screenshot 2](readme_images/Screenshot (62).png)
+![screenshot 1](<readme_images/Screenshot (61).png>)
+![screenshot 2](<readme_images/Screenshot (62).png>)
