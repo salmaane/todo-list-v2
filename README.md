@@ -14,4 +14,4 @@ Filter list by completed or active tasks
 User-friendly interface
 
 ### Demo:
-You can see the live demo of this project here (insert link to your deployed project if available).
+You can see the live demo of this project [here](https://salmaane.github.io/todo-list-v2/).
